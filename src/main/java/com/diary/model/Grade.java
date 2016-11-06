@@ -1,9 +1,11 @@
 package com.diary.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by JaroLP on 2016-11-02.
@@ -21,7 +23,12 @@ public class Grade  implements Serializable {
 
     private int gradeValue;
 
-    @ManyToOne
-    private Subject subject;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnore
+    private Student student;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnore
+    private Subject subject;
 }

@@ -3,6 +3,7 @@ package com.diary.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.persistence.criteria.Fetch;
 import java.io.Serializable;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
 @Entity
 public class Teacher extends User{
 
-    @OneToMany(mappedBy = "teacher")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "teacher")
     private List<Subject> subjectList;
 
 

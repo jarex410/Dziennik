@@ -17,10 +17,10 @@ public class Student extends User{
 
     private static final long serialVersionUID = 789234L;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "studentList")
-    private List<Subject> subjectList;
-
     @ManyToOne
     @JsonIgnore
     private SchoolClass schoolClass;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "student")
+    private List<Grade> gradeList;
 }

@@ -1,5 +1,6 @@
 package com.diary.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.internal.NotNull;
 import lombok.Data;
 
@@ -24,14 +25,15 @@ public class Subject implements Serializable {
 
     private String name;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "subject")
-    private List<Grade> grades;
-
     @ManyToMany(fetch = FetchType.EAGER)
-    private List<Student> studentList;
+    private List<SchoolClass> schoolClasses;
 
     @ManyToOne
+    @JsonIgnore
     private Teacher teacher;
 
+    @OneToMany(fetch = FetchType.EAGER)
+    @JsonIgnore
+    private List<Grade> grades;
 
 }
