@@ -1,5 +1,6 @@
 package com.diary.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -15,10 +16,11 @@ import java.util.List;
 public class Student extends User{
 
     private static final long serialVersionUID = 789234L;
-    @OneToMany(fetch = FetchType.EAGER)
-    private List<Grade> grades;
 
-    @OneToMany(fetch = FetchType.EAGER)
-    private List<Student> studentList;
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "studentList")
+    private List<Subject> subjectList;
 
+    @ManyToOne
+    @JsonIgnore
+    private SchoolClass schoolClass;
 }

@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by JaroLP on 2016-11-02.
@@ -31,4 +32,5 @@ public class User implements Serializable {
     private String surname;
 
     private String address;
+
 }

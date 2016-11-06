@@ -15,7 +15,8 @@ import java.util.List;
 @Entity
 public class Teacher extends User{
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "teacher")
     private List<Subject> subjectList;
+
 
 }

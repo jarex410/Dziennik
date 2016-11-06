@@ -2,9 +2,7 @@ package com.diary.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -22,5 +20,8 @@ public class Grade  implements Serializable {
     private long id;
 
     private int gradeValue;
+
+    @ManyToOne
+    private Subject subject;
 
 }

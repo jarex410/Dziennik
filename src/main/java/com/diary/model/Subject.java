@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by JaroLP on 2016-11-02.
@@ -22,6 +23,15 @@ public class Subject implements Serializable {
     private long id;
 
     private String name;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "subject")
+    private List<Grade> grades;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Student> studentList;
+
+    @ManyToOne
+    private Teacher teacher;
 
 
 }
