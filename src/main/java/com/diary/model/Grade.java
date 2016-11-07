@@ -24,11 +24,4 @@ public class Grade  implements Serializable {
 
     private int gradeValue;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JsonIgnore
-    private Student student;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JsonIgnore
-    private Subject subject;
 }

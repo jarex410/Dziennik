@@ -28,8 +28,18 @@ public class SubjectController {
        return subjectService.addNewSubject(subject);
     }
 
-
     @RequestMapping(path = "/{subjectID}/teacher/{teacherID}", method = RequestMethod.PUT)
     public void addTeacherToSubject(@PathVariable("subjectID") String subjectID, @PathVariable("teacherID")String teacherID){
         subjectService.addSubjectToTeacher(Long.valueOf(subjectID),Long.valueOf(teacherID));
-    }}
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, path = "/{subjectID}/class/{classID}")
+    public void addTeacherToClass(@PathVariable("classID") String classID, @PathVariable("subjectID") String subjectID){
+        subjectService.addSubjectToClass(Long.valueOf(classID), Long.valueOf(subjectID));}
+
+    @RequestMapping(path = "/{subjectID}/student/{studentID}/grade/{gradeID}", method = RequestMethod.PUT)
+    public void addGradeToSubjectAndClass(@PathVariable("gradeID") String gradeID, @PathVariable("subjectID") String subjectID, @PathVariable("studentID") String studentID) {
+        subjectService.addGradeToSubjectAndStudent(Long.valueOf(gradeID), Long.valueOf(subjectID), Long.valueOf(studentID));
+    }
+
+}

@@ -2,6 +2,7 @@ package com.diary.services;
 
 import com.diary.dao.SchoolClassDAO;
 import com.diary.dao.StudentDAO;
+import com.diary.model.Grade;
 import com.diary.model.SchoolClass;
 import com.diary.model.Student;
 import com.diary.model.User;
@@ -39,6 +40,15 @@ public class StudentService {
         SchoolClass schoolClass = schoolClassDAO.getById(SchoolClass.class,classID);
         Student student = studentDAO.getUser(Student.class,studentID);
         student.setSchoolClass(schoolClass);
+        studentDAO.update(student);
+    }
+
+    @Transactional
+    public void addGradeToStudent(Long studentID, Grade grade){
+        Student student = (Student) studentDAO.getById(Student.class, studentID);
+        List<Grade> studentGrades = student.getGradeList();
+        studentGrades.add(grade);
+        student.setGradeList(studentGrades);
         studentDAO.update(student);
     }
 

@@ -29,8 +29,4 @@ public class GradeController {
         return gradeService.addGrade(grade);
     }
 
-    @RequestMapping(path = "/{gradeID}/subject/{subjectID}/student/{studentID}", method = RequestMethod.PUT)
-    public void addGradeToSubjectAndClass(@PathVariable("gradeID") String gradeID, @PathVariable("subjectID") String subjectID, @PathVariable("studentID") String studentID) {
-        gradeService.addGradeToSubjectAndClass(Long.valueOf(gradeID), Long.valueOf(subjectID), Long.valueOf(studentID));
-    }
 }

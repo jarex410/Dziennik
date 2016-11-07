@@ -21,6 +21,7 @@ public class Student extends User{
     @JsonIgnore
     private SchoolClass schoolClass;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "student")
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name="student_id")
     private List<Grade> gradeList;
 }

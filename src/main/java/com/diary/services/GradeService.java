@@ -4,7 +4,6 @@ import com.diary.dao.GradeDAO;
 import com.diary.dao.StudentDAO;
 import com.diary.dao.SubjectDAO;
 import com.diary.model.Grade;
-import com.diary.model.SchoolClass;
 import com.diary.model.Student;
 import com.diary.model.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,26 +28,18 @@ public class GradeService {
     @Autowired
     private StudentDAO studentDAO;
 
+    @Autowired
+    private SubjectService subjectService;
+
     @Transactional
-    public Grade addGrade(Grade grade){
+    public Grade addGrade(Grade grade) {
         return gradeDAO.create(grade);
     }
 
     @Transactional
-    public List<Grade> findAll(){
+    public List<Grade> findAll() {
         return gradeDAO.findAll(Grade.class);
     }
 
-    @Transactional
-    public void addGradeToSubjectAndClass(Long gradeID, Long subjectID, Long studentID){
-        Grade grade = gradeDAO.getById(Grade.class,gradeID);
-        Subject subject = subjectDAO.getById(Subject.class,subjectID);
-        Student student = (Student) studentDAO.getById(Student.class,studentID);
 
-
-        grade.setStudent(student);
-        grade.setSubject(subject);
-
-        gradeDAO.update(grade);
-    }
 }

@@ -25,10 +25,11 @@ public class SchoolClass implements Serializable {
     @NotNull
     private String name;
 
-    @OneToMany( fetch =  FetchType.EAGER, mappedBy = "schoolClass")
+    @OneToMany( fetch =  FetchType.EAGER)
+    @JoinColumn(name="schoolClass_id")
     private List<Student> studentList;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "schoolClasses")
+    @ManyToMany(fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Subject> subjectList;
 

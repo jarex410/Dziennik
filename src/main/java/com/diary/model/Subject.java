@@ -29,12 +29,8 @@ public class Subject implements Serializable {
     @ManyToMany(fetch = FetchType.EAGER)
     private List<SchoolClass> schoolClasses;
 
-    @ManyToOne
-    @JsonIgnore
-    private Teacher teacher;
-
     @OneToMany(fetch = FetchType.EAGER)
-    @JsonIgnore
+    @JoinColumn(name="subject_id")
     private List<Grade> grades;
 
 }

@@ -47,10 +47,5 @@ public class SchoolClassController {
         schoolClassService.addSubjectToClass(Long.valueOf(classID),Long.valueOf(sujectID));
     }
 
-/*
-    @RequestMapping(method = RequestMethod.PUT, path = "/{classId}/teacher/{teacherId}")
-    public void addTeacherToClass(@PathVariable("teacherId") String teacherId, @PathVariable("classId") String classId){
-        schoolClassService.addTeacherToClass(Long.valueOf(teacherId), Long.valueOf(classId));}
-*/
 
 }

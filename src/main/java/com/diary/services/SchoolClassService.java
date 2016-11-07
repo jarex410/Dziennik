@@ -53,20 +53,12 @@ public class SchoolClassService {
         Subject subject = subjectDAO.getById(Subject.class,subjectID);
         SchoolClass schoolClass = schoolClassDAO.getById(SchoolClass.class,classID);
 
-        List<SchoolClass> schoolClasses = subject.getSchoolClasses();
-        schoolClasses.add(schoolClass);
-
-        schoolClassDAO.update(schoolClass);
+        List<Subject> subjects = schoolClass.getSubjectList();
+        if(!subjects.contains(subject)) {
+            subjects.add(subject);
+            schoolClass.setSubjectList(subjects);
+            schoolClassDAO.update(schoolClass);
+        }
     }
-/*
-    @Transactional
-    public void addTeacherToClass(Long teacherID, Long schoolClassID) {
-        SchoolClass schoolClass = schoolClassDAO.getById(SchoolClass.class, schoolClassID);
-        Teacher teacher = teacherDAO.getUser(Teacher.class, teacherID);
 
-        List<Teacher> teachers = schoolClass.getTeacherList();
-        teachers.add(teacher);
-        schoolClass.setTeacherList(teachers);
-        schoolClassDAO.update(schoolClass);
-    }*/
 }

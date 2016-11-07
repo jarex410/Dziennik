@@ -21,7 +21,7 @@ public class User implements Serializable {
     @Id
     @NotNull
     @SequenceGenerator(name = "UserSeq", sequenceName = "USER_SEQ", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GradeSeq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "UserSeq")
     private long id;
 
     private String login;
