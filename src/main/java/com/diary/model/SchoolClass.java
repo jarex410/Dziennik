@@ -18,7 +18,8 @@ public class SchoolClass implements Serializable {
 
     @Id
     @NotNull
-    @GeneratedValue
+    @SequenceGenerator(name = "ClassSeq", sequenceName = "CLASS_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ClassSeq")
     private long id;
 
     @NotNull

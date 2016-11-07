@@ -20,7 +20,8 @@ public class User implements Serializable {
 
     @Id
     @NotNull
-    @GeneratedValue
+    @SequenceGenerator(name = "UserSeq", sequenceName = "USER_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GradeSeq")
     private long id;
 
     private String login;

@@ -20,7 +20,8 @@ public class Subject implements Serializable {
 
     @Id
     @NotNull
-    @GeneratedValue
+    @SequenceGenerator(name = "SubjectSeq", sequenceName = "SUBJECT_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SubjectSeq")
     private long id;
 
     private String name;
