@@ -77,5 +77,4 @@ public class SubjectService {
         subject.setSchoolClasses(schoolClasses);
         subjectDAO.update(subject);
     }
-
 }
