@@ -2,10 +2,10 @@ package com.diary.services;
 
 import com.diary.dao.SchoolClassDAO;
 import com.diary.dao.StudentDAO;
+import com.diary.model.DiaryUser;
 import com.diary.model.Grade;
 import com.diary.model.SchoolClass;
 import com.diary.model.Student;
-import com.diary.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,7 +31,7 @@ public class StudentService {
     }
 
     @Transactional
-    public List<User> findAll(){
+    public List<DiaryUser> findAll() {
         return studentDAO.findAll(Student.class);
     }
 

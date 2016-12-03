@@ -1,7 +1,7 @@
 package com.diary.controller;
 
+import com.diary.model.DiaryUser;
 import com.diary.model.Teacher;
-import com.diary.model.User;
 import com.diary.services.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,8 +34,8 @@ public class TeacherController {
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public List<User> findAll(){
-        List<User> teachers = teacherService.findAll();
+    public List<DiaryUser> findAll() {
+        List<DiaryUser> teachers = teacherService.findAll();
         return teachers;
     }
 

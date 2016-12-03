@@ -1,10 +1,9 @@
 package com.diary.model;
 
-import lombok.Data;
-
-import javax.persistence.*;
-import javax.persistence.criteria.Fetch;
-import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import java.util.List;
 
 /**
@@ -12,13 +11,18 @@ import java.util.List;
  */
 
 
-@Data
 @Entity
-public class Teacher extends User{
+public class Teacher extends DiaryUser {
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name="teacher_id")
     private List<Subject> subjectList;
 
+    public List<Subject> getSubjectList() {
+        return subjectList;
+    }
 
+    public void setSubjectList(List<Subject> subjectList) {
+        this.subjectList = subjectList;
+    }
 }

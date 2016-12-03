@@ -1,6 +1,6 @@
 package com.diary.dao;
 
-import com.diary.model.User;
+import com.diary.model.DiaryUser;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -13,7 +13,7 @@ import java.lang.reflect.Type;
  * Created by JaroLP on 2016-11-05.
  */
 @Repository
-public abstract class UserDAO<T> extends AbstractDAO<User> {
+public abstract class UserDAO<T> extends AbstractDAO<DiaryUser> {
 
     @Autowired
     SessionFactory sessionFactory;

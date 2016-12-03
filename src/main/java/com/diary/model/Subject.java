@@ -1,10 +1,7 @@
 package com.diary.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sun.istack.internal.NotNull;
-import lombok.Data;
-
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 
@@ -12,7 +9,6 @@ import java.util.List;
  * Created by JaroLP on 2016-11-02.
  */
 
-@Data
 @Entity
 public class Subject implements Serializable {
 
@@ -30,7 +26,38 @@ public class Subject implements Serializable {
     private List<SchoolClass> schoolClasses;
 
     @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name="subject_id")
+    @JoinColumn(name = "subject_id")
     private List<Grade> grades;
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<SchoolClass> getSchoolClasses() {
+        return schoolClasses;
+    }
+
+    public void setSchoolClasses(List<SchoolClass> schoolClasses) {
+        this.schoolClasses = schoolClasses;
+    }
+
+    public List<Grade> getGrades() {
+        return grades;
+    }
+
+    public void setGrades(List<Grade> grades) {
+        this.grades = grades;
+    }
 }
