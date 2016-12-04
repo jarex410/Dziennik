@@ -9,9 +9,10 @@
 
     <bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="dataSource">
         <property name="driverClassName" value="org.postgresql.Driver"/>
-        <property name="url" value="jdbc:postgresql://ec2-54-235-207-98.compute-1.amazonaws.com/dd425avbcr6bsu?sslmode=require&amp;user=dqjnrmomrajjla&amp;password=jBQFDh87MtC-eYXc75QQsbHW1c"/>
-        <property name="username" value="dqjnrmomrajjla"/>
-        <property name="password" value="jBQFDh87MtC-eYXc75QQsbHW1c"/>
+        <property name="url"
+                  value="jdbc:postgresql://ec2-54-75-239-190.eu-west-1.compute.amazonaws.com/dae3obp4v4hgvn?sslmode=require&amp;user=cygtscjjqowfwp&amp;password=jOS7O-SXoboIPqV4k4m0Sr7QZQ-"/>
+        <property name="username" value="cygtscjjqowfwp"/>
+        <property name="password" value="OS7O-SXoboIPqV4k4m0Sr7QZQ-"/>
         <property name="maxActive" value="10"/>
         <property name="maxIdle" value="5"/>
         <property name="minIdle" value="2"/>
