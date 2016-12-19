@@ -1,6 +1,7 @@
 package com.diary.dao;
 
 import com.diary.model.DiaryUser;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -28,6 +29,11 @@ public abstract class UserDAO<T> extends AbstractDAO<DiaryUser> {
 
     public T getUser(Class clazz, Object t) {
         return (T) (this.sessionFactory.getCurrentSession().get(clazz, (Serializable) t));
+    }
+
+    public DiaryUser findByLogin(String login) {
+        return (DiaryUser) this.sessionFactory.getCurrentSession()
+                .createQuery("SELECT * FROM DIARY_USERS WHERE LOGIN =?").setParameter(0, login).list().get(0);
     }
 
 }

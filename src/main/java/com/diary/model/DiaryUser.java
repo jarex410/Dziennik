@@ -1,6 +1,5 @@
 package com.diary.model;
 
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -30,6 +29,9 @@ public class DiaryUser implements Serializable {
     private String surname;
 
     private String address;
+
+    @OneToMany(mappedBy = "role_id")
+    private Role role;
 
     public long getId() {
         return id;
@@ -77,5 +79,13 @@ public class DiaryUser implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
