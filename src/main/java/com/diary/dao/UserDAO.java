@@ -13,7 +13,7 @@ import java.lang.reflect.Type;
  * Created by JaroLP on 2016-11-05.
  */
 @Repository
-public abstract class UserDAO<T> extends AbstractDAO<DiaryUser> {
+public class UserDAO<T> extends AbstractDAO<DiaryUser> {
 
     @Autowired
     SessionFactory sessionFactory;
