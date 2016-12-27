@@ -12,6 +12,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/grade")
+@CrossOrigin
 public class GradeController {
 
     @Autowired

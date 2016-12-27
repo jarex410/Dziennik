@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/subject")
+@CrossOrigin
 public class SubjectController {
 
     @Autowired

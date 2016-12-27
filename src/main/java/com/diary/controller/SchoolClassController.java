@@ -18,6 +18,7 @@ import java.util.List;
 @EnableWebMvc
 @RestController
 @RequestMapping("/class")
+@CrossOrigin
 public class SchoolClassController {
 
     @Autowired

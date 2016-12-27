@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.ws.rs.Consumes;
+import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 /**
@@ -15,6 +17,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/teacher")
+@CrossOrigin
 public class TeacherController {
 
     @Autowired
@@ -28,6 +31,7 @@ public class TeacherController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
+    @Consumes(MediaType.APPLICATION_JSON)
     public void addTeacher(@RequestBody Teacher teacher) {
         teacherService.create(teacher);
     }

@@ -30,4 +30,8 @@ public abstract class UserDAO<T> extends AbstractDAO<DiaryUser> {
         return (T) (this.sessionFactory.getCurrentSession().get(clazz, (Serializable) t));
     }
 
+    public DiaryUser findByLogin(String login) {
+        return (DiaryUser) sessionFactory.getCurrentSession().createQuery("FROM DiaryUser WHERE login = ?").setParameter(0, login);
+    }
+
 }
