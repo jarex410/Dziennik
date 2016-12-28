@@ -31,6 +31,8 @@ public class DiaryUser implements Serializable {
 
     private String address;
 
+    private Boolean isTeacher = false;
+
     public long getId() {
         return id;
     }
@@ -77,5 +79,13 @@ public class DiaryUser implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Boolean getTeacher() {
+        return isTeacher;
+    }
+
+    public void setTeacher(Boolean teacher) {
+        isTeacher = teacher;
     }
 }
