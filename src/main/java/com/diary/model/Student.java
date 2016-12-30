@@ -2,17 +2,14 @@ package com.diary.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 /**
  * Created by JaroLP on 2016-11-02.
  */
 
-
+@Entity
 public class Student extends DiaryUser {
 
     private static final long serialVersionUID = 789234L;
