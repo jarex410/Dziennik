@@ -47,7 +47,8 @@ public class SubjectController {
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public List<Subject> getSubjectByTeacher(@PathParam("teacherID") String teacherID) {
-        return subjectService.getSubjectByTeacherId(teacherID);
+        List<Subject> subjects = subjectService.getSubjectByTeacherId(teacherID);
+        return subjects;
     }
 
 }
