@@ -77,4 +77,9 @@ public class SubjectService {
         subject.setSchoolClasses(schoolClasses);
         subjectDAO.update(subject);
     }
+
+    @Transactional
+    public List<Subject> getSubjectByTeacherId(String teacherID){
+        return subjectDAO.findSubjectByTeacherId(teacherID);
+    }
 }
