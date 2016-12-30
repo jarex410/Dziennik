@@ -50,4 +50,10 @@ public class SubjectController {
         return subjectService.getSubjectByTeacherId(teacherID);
     }
 
+    @RequestMapping(method = RequestMethod.GET, path = "/{subjectID}")
+    @ResponseBody
+    public Subject getById(@PathVariable("subjectID") String subjectID) {
+        return subjectService.getById(Long.valueOf(subjectID));
+    }
+
 }

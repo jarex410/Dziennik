@@ -4,7 +4,10 @@ import com.diary.dao.GradeDAO;
 import com.diary.dao.SchoolClassDAO;
 import com.diary.dao.SubjectDAO;
 import com.diary.dao.TeacherDAO;
-import com.diary.model.*;
+import com.diary.model.Grade;
+import com.diary.model.SchoolClass;
+import com.diary.model.Subject;
+import com.diary.model.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -81,5 +84,10 @@ public class SubjectService {
     @Transactional
     public List<Subject> getSubjectByTeacherId(String teacherID){
         return subjectDAO.findSubjectByTeacherId(teacherID);
+    }
+
+    @Transactional
+    public Subject getById(Long subjectId) {
+        return subjectDAO.getById(Subject.class, subjectId);
     }
 }
