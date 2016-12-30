@@ -43,10 +43,10 @@ public class SchoolClassController {
         return schoolClasses;
     }
 
-    @RequestMapping(path = "/{classID}/subject/{subjectID}", method = RequestMethod.PUT)
+/*    @RequestMapping(path = "/{classID}/subject/{subjectID}", method = RequestMethod.PUT)
     public void addSubjectToClass(@PathVariable("classID") String classID, @PathVariable("subjectID")String sujectID){
         schoolClassService.addSubjectToClass(Long.valueOf(classID),Long.valueOf(sujectID));
-    }
+    }*/
 
 
 }

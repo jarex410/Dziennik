@@ -5,7 +5,6 @@ import com.diary.dao.StudentDAO;
 import com.diary.dao.SubjectDAO;
 import com.diary.dao.TeacherDAO;
 import com.diary.model.SchoolClass;
-import com.diary.model.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,7 +46,7 @@ public class SchoolClassService {
     public List<SchoolClass> findAll() {
         return schoolClassDAO.findAll(SchoolClass.class);
     }
-
+/*
     @Transactional
     public void addSubjectToClass(Long classID, Long subjectID){
         Subject subject = subjectDAO.getById(Subject.class,subjectID);
@@ -59,6 +58,6 @@ public class SchoolClassService {
             schoolClass.setSubjectList(subjects);
             schoolClassDAO.update(schoolClass);
         }
-    }
+    }*/
 
 }

@@ -1,7 +1,5 @@
 package com.diary.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -25,9 +23,6 @@ public class SchoolClass implements Serializable {
     @JoinColumn(name="schoolClass_id")
     private List<Student> studentList;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JsonIgnore
-    private List<Subject> subjectList;
 
     public long getId() {
         return id;
@@ -53,11 +48,4 @@ public class SchoolClass implements Serializable {
         this.studentList = studentList;
     }
 
-    public List<Subject> getSubjectList() {
-        return subjectList;
-    }
-
-    public void setSubjectList(List<Subject> subjectList) {
-        this.subjectList = subjectList;
-    }
 }
