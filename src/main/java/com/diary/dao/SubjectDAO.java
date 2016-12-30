@@ -1,6 +1,5 @@
 package com.diary.dao;
 
-import com.diary.model.SchoolClass;
 import com.diary.model.Subject;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +17,6 @@ public class SubjectDAO extends AbstractDAO<Subject> {
     SessionFactory sessionFactory;
 
     public List<Subject> findSubjectByTeacherId(String teacherID) {
-        return this.sessionFactory.getCurrentSession().createQuery("FROM Subject WHERE teacher_id = ?").setParameter(0, login).list().get(0));
+        return this.sessionFactory.getCurrentSession().createQuery("FROM Subject WHERE teacher_id = ?").setParameter(0, teacherID).list();
     }
 }
