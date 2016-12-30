@@ -1,5 +1,8 @@
 package com.diary.model;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -23,6 +26,7 @@ public class Subject implements Serializable {
     private String name;
 
     @ManyToMany(fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SELECT)
     private List<SchoolClass> schoolClasses;
 
     @OneToMany(fetch = FetchType.EAGER)
