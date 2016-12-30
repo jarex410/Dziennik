@@ -2,7 +2,6 @@ package com.diary.services;
 
 import com.diary.dao.SchoolClassDAO;
 import com.diary.dao.StudentDAO;
-import com.diary.model.DiaryUser;
 import com.diary.model.Grade;
 import com.diary.model.SchoolClass;
 import com.diary.model.Student;
@@ -30,10 +29,10 @@ public class StudentService {
         studentDAO.create(student);
     }
 
-    @Transactional
-    public List<DiaryUser> findAll() {
+/*    @Transactional
+    public List<Student> findAll() {
         return studentDAO.findAll(Student.class);
-    }
+    }*/
 
     @Transactional
     public void addStudentToClass(Long classID, Long studentID){
@@ -50,6 +49,11 @@ public class StudentService {
         studentGrades.add(grade);
         student.setGradeList(studentGrades);
         studentDAO.update(student);
+    }
+
+    @Transactional
+    public List<Student> findStudentsByClassID(Long clasID) {
+        return studentDAO.findStudentsByClassID(clasID);
     }
 
 }
