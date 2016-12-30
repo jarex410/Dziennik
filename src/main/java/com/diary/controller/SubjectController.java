@@ -44,6 +44,7 @@ public class SubjectController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
+    @ResponseBody
     public void getSubjectByTeacher(@PathParam("teacherID") String teacherID){
         subjectService.getSubjectByTeacherId(teacherID);
     }

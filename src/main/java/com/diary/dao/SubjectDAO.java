@@ -17,6 +17,6 @@ public class SubjectDAO extends AbstractDAO<Subject> {
     SessionFactory sessionFactory;
 
     public List<Subject> findSubjectByTeacherId(String teacherID) {
-        return this.sessionFactory.getCurrentSession().createQuery("FROM Subject WHERE teacher_id = ?").setParameter(0, teacherID).list();
+        return (List<Subject>) this.sessionFactory.getCurrentSession().createQuery("FROM Subject WHERE teacher_id = ?").setParameter(0, Long.valueOf(teacherID)).list();
     }
 }
