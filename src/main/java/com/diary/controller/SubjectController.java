@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
-import java.util.List;
 
 /**
  * Created by JaroLP on 2016-11-06.
@@ -20,9 +19,9 @@ public class SubjectController {
     @Autowired
     SubjectService subjectService;
 
-    @RequestMapping(method = RequestMethod.GET)
+/*    @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public List<Subject> findAll(){return subjectService.findAll();}
+    public List<Subject> findAll(){return subjectService.findAll();}*/
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
