@@ -18,6 +18,6 @@ public class StudentDAO extends UserDAO<Student> {
     SessionFactory sessionFactory;
 
     public List<Student> findStudentsByClassID(Long clasID) {
-        return (List<Student>) this.sessionFactory.getCurrentSession().createQuery("FROM Student WHERE schoolClass = ?").setParameter(0, clasID).list();
+        return (List<Student>) this.sessionFactory.getCurrentSession().createQuery("FROM Student WHERE schoolClass_id = ?").setParameter(0, clasID).list();
     }
 }
