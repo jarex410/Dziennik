@@ -20,6 +20,7 @@ public class Student extends DiaryUser {
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name="student_id")
+    @JsonIgnore
     private List<Grade> gradeList;
 
     public SchoolClass getSchoolClass() {

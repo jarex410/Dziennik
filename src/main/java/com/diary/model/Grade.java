@@ -1,7 +1,5 @@
 package com.diary.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -24,12 +22,10 @@ public class Grade  implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "student_id")
-    @JsonIgnore
     private Student student;
 
     @ManyToOne
     @JoinColumn(name = "subjec_id")
-    @JsonIgnore
     private Subject subject;
 
     public long getId() {

@@ -1,5 +1,6 @@
 package com.diary.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -31,6 +32,7 @@ public class Subject implements Serializable {
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "subject_id")
+    @JsonIgnore
     private List<Grade> grades;
 
     public long getId() {
