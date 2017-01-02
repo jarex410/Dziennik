@@ -1,10 +1,8 @@
 package com.diary.controller;
 
-import com.diary.model.DiaryUser;
 import com.diary.model.Grade;
 import com.diary.services.GradeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
@@ -38,7 +36,7 @@ public class GradeController {
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public List<Grade> getGradeByStudentAndSubject(@PathParam("studentId") String studentId, @PathParam("subjectId") String subjectId) {
-        return gradeService.findGradesByStudentAndSubject(Long.valueOf(studentId), Long.valueOf(studentId));
+        return gradeService.findGradesByStudentAndSubject(Long.valueOf(studentId), Long.valueOf(subjectId));
     }
 
 }
