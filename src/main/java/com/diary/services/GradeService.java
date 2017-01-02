@@ -41,5 +41,9 @@ public class GradeService {
         return gradeDAO.findAll(Grade.class);
     }
 
+    @Transactional
+    public List<Grade> findGradesByStudentAndSubject(Long studentID, Long subjectID){
+        return gradeDAO.findGradesByStudentAndSubject(studentID,subjectID);
+    }
 
 }

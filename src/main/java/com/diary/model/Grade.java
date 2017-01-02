@@ -1,5 +1,7 @@
 package com.diary.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -20,6 +22,15 @@ public class Grade  implements Serializable {
 
     private int gradeValue;
 
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    @JsonIgnore
+    private Student student;
+
+    @ManyToOne
+    @JoinColumn(name = "subjec_id")
+    @JsonIgnore
+    private Subject subject;
 
     public long getId() {
         return id;
@@ -35,5 +46,21 @@ public class Grade  implements Serializable {
 
     public void setGradeValue(int gradeValue) {
         this.gradeValue = gradeValue;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Subject getSubject() {
+        return subject;
+    }
+
+    public void setSubject(Subject subject) {
+        this.subject = subject;
     }
 }
