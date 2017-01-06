@@ -1,11 +1,8 @@
 package com.diary.services;
 
 import com.diary.dao.GradeDAO;
-import com.diary.dao.StudentDAO;
 import com.diary.dao.SubjectDAO;
 import com.diary.model.Grade;
-import com.diary.model.Student;
-import com.diary.model.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,10 +23,16 @@ public class GradeService {
     private SubjectDAO subjectDAO;
 
     @Autowired
-    private StudentDAO studentDAO;
+    private StudentService studentService;
 
     @Autowired
     private SubjectService subjectService;
+
+    @Transactional
+    public Grade findGradeById(Long gradeId) {
+        return gradeDAO.getById(Grade.class, gradeId);
+    }
+
 
     @Transactional
     public Grade addGrade(Grade grade) {
@@ -42,8 +45,8 @@ public class GradeService {
     }
 
     @Transactional
-    public List<Grade> findGradesByStudentAndSubject(Long studentID, Long subjectID){
-        return gradeDAO.findGradesByStudentAndSubject(studentID,subjectID);
+    public List<Grade> findGradesByStudentAndSubject(Long studentID, Long subjectID) {
+        return gradeDAO.findGradesByStudentAndSubject(studentID, subjectID);
     }
 
 }

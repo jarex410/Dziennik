@@ -9,11 +9,21 @@ import java.util.List;
  */
 public class StudentDTO {
 
+    private long id;
+
     private String name;
 
     private String surname;
 
     private List<Grade> grades;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -39,9 +49,10 @@ public class StudentDTO {
         this.grades = grades;
     }
 
-    public StudentDTO(String name, String surname, List<Grade> grades) {
+    public StudentDTO(Long id, String name, String surname, List<Grade> grades) {
         this.name = name;
         this.surname = surname;
         this.grades = grades;
+        this.id = id;
     }
 }

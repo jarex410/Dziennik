@@ -1,6 +1,5 @@
 package com.diary.services;
 
-import com.diary.dao.GradeDAO;
 import com.diary.dao.SchoolClassDAO;
 import com.diary.dao.SubjectDAO;
 import com.diary.dao.TeacherDAO;
@@ -31,7 +30,7 @@ public class SubjectService {
     private SchoolClassDAO schoolClassDAO;
 
     @Autowired
-    private GradeDAO gradeDAO;
+    private GradeService gradeService;
 
     @Autowired
     private StudentService studentService;
@@ -59,7 +58,7 @@ public class SubjectService {
 
     @Transactional
     public void addGradeToSubjectAndStudent(Long gradeID, Long subjectID, Long studentID){
-        Grade grade = gradeDAO.getById(Grade.class, gradeID);
+        Grade grade = gradeService.findGradeById(gradeID);
         Subject subject = subjectDAO.getById(Subject.class,subjectID);
         List<Grade> grades = subject.getGrades();
         grades.add(grade);

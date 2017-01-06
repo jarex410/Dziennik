@@ -1,13 +1,10 @@
 package com.diary.services;
 
-import com.diary.dao.GradeDAO;
 import com.diary.dao.SchoolClassDAO;
-import com.diary.dao.StudentDAO;
 import com.diary.dao.TeacherDAO;
+import com.diary.dto.GradeDTO;
 import com.diary.dto.StudentDTO;
-import com.diary.model.DiaryUser;
-import com.diary.model.Student;
-import com.diary.model.Teacher;
+import com.diary.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,10 +26,13 @@ public class TeacherService {
     SchoolClassDAO schoolClassDAO;
 
     @Autowired
-    StudentDAO studentDAO;
+    StudentService studentService;
 
     @Autowired
-    GradeDAO gradeDAO;
+    GradeService gradeService;
+
+    @Autowired
+    SubjectService subjectService;
 
     @Transactional
     public void create(Teacher teacher) {
@@ -52,10 +52,18 @@ public class TeacherService {
 
     @Transactional
     public List<StudentDTO> getStudentWithGradesByClassAndSubject(final Long classID) {
-        List<Student> students = studentDAO.findStudentsByClassID(Long.valueOf(classID));
+        List<Student> students = studentService.findStudentsByClassID(Long.valueOf(classID));
         final List<StudentDTO> studentsWithGrades = new ArrayList<>();
-        students.forEach(student -> studentsWithGrades.add(new StudentDTO(student.getName(), student.getSurname(), gradeDAO.findGradesByStudentAndSubject(student.getId(), classID))));
+        students.forEach(student -> studentsWithGrades.add(new StudentDTO(student.getId(), student.getName(), student.getSurname(), gradeService.findGradesByStudentAndSubject(student.getId(), classID))));
         return studentsWithGrades;
     }
 
+    @Transactional
+    public void addGradeToStudent(GradeDTO gradeDTO) {
+        List<String> listOfGradesValues = gradeDTO.getValues();
+        Student student = studentService.findStudentById(gradeDTO.getStudentID());
+        Subject subject = subjectService.getById(gradeDTO.getSubjectID());
+
+        listOfGradesValues.forEach(x -> gradeService.addGrade(new Grade(Integer.parseInt(x), student, subject)));
+    }
 }

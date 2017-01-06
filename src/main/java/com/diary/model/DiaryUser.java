@@ -19,7 +19,7 @@ public class DiaryUser implements Serializable {
     @NotNull
     @SequenceGenerator(name = "UserSeq", sequenceName = "USER_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "UserSeq")
-    private long id;
+    private Long id;
 
     private String login;
 

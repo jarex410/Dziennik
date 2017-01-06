@@ -35,9 +35,15 @@ public class StudentService {
     }*/
 
     @Transactional
+    public Student findStudentById(Long studentId) {
+        return (Student) studentDAO.getById(Student.class, studentId);
+    }
+
+
+    @Transactional
     public void addStudentToClass(Long classID, Long studentID){
         SchoolClass schoolClass = schoolClassDAO.getById(SchoolClass.class,classID);
-        Student student = studentDAO.getUser(Student.class,studentID);
+        Student student = (Student) studentDAO.getById(Student.class, studentID);
         student.setSchoolClass(schoolClass);
         studentDAO.update(student);
     }

@@ -1,5 +1,6 @@
 package com.diary.controller;
 
+import com.diary.dto.GradeDTO;
 import com.diary.dto.StudentDTO;
 import com.diary.model.DiaryUser;
 import com.diary.model.Teacher;
@@ -49,6 +50,12 @@ public class TeacherController {
     @ResponseBody
     public List<StudentDTO> getListOfStudentsWithGrades(@PathParam("classID") String classID) {
         return teacherService.getStudentWithGradesByClassAndSubject(Long.valueOf(classID));
+    }
+
+    @RequestMapping(method = RequestMethod.POST, path = "/grades")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void addGradesToStudent(@RequestBody GradeDTO gradeDTO) {
+        teacherService.addGradeToStudent(gradeDTO);
     }
 
 }

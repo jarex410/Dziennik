@@ -16,9 +16,9 @@ public class Grade  implements Serializable {
     @Id
     @SequenceGenerator(name = "GradeSeq", sequenceName = "GRADE_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "GradeSeq")
-    private long id;
+    private Long id;
 
-    private int gradeValue;
+    private Integer gradeValue;
 
     @ManyToOne
     @JoinColumn(name = "student_id")
@@ -27,6 +27,15 @@ public class Grade  implements Serializable {
     @ManyToOne
     @JoinColumn(name = "subjec_id")
     private Subject subject;
+
+    public Grade() {
+    }
+
+    public Grade(Integer gradeValue, Student student, Subject subject) {
+        this.gradeValue = gradeValue;
+        this.student = student;
+        this.subject = subject;
+    }
 
     public long getId() {
         return id;

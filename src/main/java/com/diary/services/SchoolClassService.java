@@ -1,7 +1,6 @@
 package com.diary.services;
 
 import com.diary.dao.SchoolClassDAO;
-import com.diary.dao.StudentDAO;
 import com.diary.dao.SubjectDAO;
 import com.diary.dao.TeacherDAO;
 import com.diary.model.SchoolClass;
@@ -22,7 +21,7 @@ public class SchoolClassService {
     private SchoolClassDAO schoolClassDAO;
 
     @Autowired
-    private StudentDAO studentDAO;
+    private StudentService studentService;
 
     @Autowired
     private TeacherDAO teacherDAO;
