@@ -48,8 +48,8 @@ public class TeacherController {
 
     @RequestMapping(method = RequestMethod.GET, path = "/grades")
     @ResponseBody
-    public List<StudentDTO> getListOfStudentsWithGrades(@PathParam("classID") String classID) {
-        return teacherService.getStudentWithGradesByClassAndSubject(Long.valueOf(classID));
+    public List<StudentDTO> getListOfStudentsWithGrades(@PathParam("classID") String classID, @PathParam("subjectID") String subjectID) {
+        return teacherService.getStudentWithGradesByClassAndSubject(Long.valueOf(classID), Long.valueOf(subjectID));
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/grades")

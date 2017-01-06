@@ -49,4 +49,9 @@ public class GradeService {
         return gradeDAO.findGradesByStudentAndSubject(studentID, subjectID);
     }
 
+    @Transactional
+    public void removeGrade(Grade grade) {
+        gradeDAO.delete(grade);
+    }
+
 }

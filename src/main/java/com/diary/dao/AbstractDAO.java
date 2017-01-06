@@ -34,6 +34,10 @@ public abstract class AbstractDAO<T> {
         return t;
     }
 
+    public void delete(T t) {
+        this.sessionFactory.getCurrentSession().delete(t);
+    }
+
     public T getById(Class clazz, Object t) {
         return (T) (this.sessionFactory.getCurrentSession().get(clazz, (Serializable) t));
     }

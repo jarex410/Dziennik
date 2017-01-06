@@ -51,10 +51,10 @@ public class TeacherService {
     }
 
     @Transactional
-    public List<StudentDTO> getStudentWithGradesByClassAndSubject(final Long classID) {
+    public List<StudentDTO> getStudentWithGradesByClassAndSubject(Long classID, Long subjectID) {
         List<Student> students = studentService.findStudentsByClassID(Long.valueOf(classID));
         final List<StudentDTO> studentsWithGrades = new ArrayList<>();
-        students.forEach(student -> studentsWithGrades.add(new StudentDTO(student.getId(), student.getName(), student.getSurname(), gradeService.findGradesByStudentAndSubject(student.getId(), classID))));
+        students.forEach(student -> studentsWithGrades.add(new StudentDTO(student.getId(), student.getName(), student.getSurname(), gradeService.findGradesByStudentAndSubject(student.getId(), subjectID))));
         return studentsWithGrades;
     }
 
@@ -63,6 +63,10 @@ public class TeacherService {
         List<String> listOfGradesValues = gradeDTO.getValues();
         Student student = studentService.findStudentById(gradeDTO.getStudentID());
         Subject subject = subjectService.getById(gradeDTO.getSubjectID());
+
+        List<Grade> currentGrades = gradeService.findGradesByStudentAndSubject(gradeDTO.getStudentID(), gradeDTO.getSubjectID());
+
+        currentGrades.forEach(x -> gradeService.removeGrade(x));
 
         listOfGradesValues.forEach(x -> gradeService.addGrade(new Grade(Integer.parseInt(x), student, subject)));
     }
