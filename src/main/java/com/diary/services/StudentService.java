@@ -1,6 +1,7 @@
 package com.diary.services;
 
 import com.diary.dao.StudentDAO;
+import com.diary.dto.GradeDTO;
 import com.diary.model.Grade;
 import com.diary.model.SchoolClass;
 import com.diary.model.Student;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -66,14 +68,19 @@ public class StudentService {
     }
 
     @Transactional
-    public HashMap<String, String> prepareCardWithGrades(Long studentID) {
+    public List<GradeDTO> prepareCardWithGrades(Long studentID) {
         HashMap<String, String> cardWithGrades = new HashMap<>();
         List<Grade> grades = gradeService.findGradesByStudent(studentID);
-
         grades.forEach(x -> cardWithGrades.put(x.getSubject().getName(), cardWithGrades.get(x.getSubject().getName()) == null ? cardWithGrades.get(x.getSubject().getName()) + x.getGradeValue() + "," : x.getGradeValue() + ","));
+        List<String> keys = (List<String>) cardWithGrades.keySet();
+        List<String> values = (List<String>) cardWithGrades.values();
+        List<GradeDTO> gradesAsLists = new ArrayList<>();
 
+        for (int i = 0; i < values.size(); i++) {
+            gradesAsLists.add(new GradeDTO(keys.get(i), values.get(i)));
+        }
 
-        return cardWithGrades;
+        return gradesAsLists;
     }
 
 }

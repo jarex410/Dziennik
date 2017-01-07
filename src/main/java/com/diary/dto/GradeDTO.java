@@ -13,6 +13,23 @@ public class GradeDTO {
 
     Long subjectID;
 
+    String subjectName;
+
+    String valuesAssString;
+
+    public GradeDTO(String valuesAssString, String subjectName) {
+        this.valuesAssString = valuesAssString;
+        this.subjectName = subjectName;
+    }
+
+    public String getValuesAssString() {
+        return valuesAssString;
+    }
+
+    public void setValuesAssString(String valuesAssString) {
+        this.valuesAssString = valuesAssString;
+    }
+
     public List<String> getValues() {
         return values;
     }

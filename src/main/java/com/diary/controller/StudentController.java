@@ -1,12 +1,12 @@
 package com.diary.controller;
 
+import com.diary.dto.GradeDTO;
 import com.diary.model.Student;
 import com.diary.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -43,7 +43,7 @@ public class StudentController {
     }
 
     @RequestMapping(path = "/card/{studentID}", method = RequestMethod.GET)
-    public HashMap<String, String> getCardWithGrades(@PathVariable("studentID") String studenID) {
+    public List<GradeDTO> getCardWithGrades(@PathVariable("studentID") String studenID) {
         return studentService.prepareCardWithGrades(Long.parseLong(studenID));
     }
 }
