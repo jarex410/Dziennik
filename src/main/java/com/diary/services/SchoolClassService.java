@@ -49,13 +49,13 @@ public class SchoolClassService {
     @Transactional
     public void addSubjectToClass(Long classID, Long subjectID){
         Subject subject = subjectDAO.getById(Subject.class,subjectID);
-        SchoolClass schoolClass = schoolClassDAO.getById(SchoolClass.class,classID);
+        SchoolClass schoolClass = schoolClassService.getById(SchoolClass.class,classID);
 
         List<Subject> subjects = schoolClass.getSubjectList();
         if(!subjects.contains(subject)) {
             subjects.add(subject);
             schoolClass.setSubjectList(subjects);
-            schoolClassDAO.update(schoolClass);
+            schoolClassService.update(schoolClass);
         }
     }*/
 

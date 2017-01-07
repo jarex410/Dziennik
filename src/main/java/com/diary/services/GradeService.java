@@ -54,4 +54,8 @@ public class GradeService {
         gradeDAO.delete(grade);
     }
 
+    @Transactional
+    public List<Grade> findGradesByStudent(Long studentID) {
+        return gradeDAO.findGradesByStudentID(studentID);
+    }
 }

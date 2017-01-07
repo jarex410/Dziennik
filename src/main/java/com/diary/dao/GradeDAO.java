@@ -16,11 +16,18 @@ public class GradeDAO extends AbstractDAO<Grade> {
     @Autowired
     SessionFactory sessionFactory;
 
-    public List<Grade> findGradesByStudentAndSubject(Long studenId, Long subjectId) {
+    public List<Grade> findGradesByStudentAndSubject(Long studentId, Long subjectId) {
         return (List<Grade>) this.sessionFactory.getCurrentSession()
                 .createQuery("FROM Grade WHERE student_id = ? and subject_id = ?")
-                .setParameter(0, studenId)
+                .setParameter(0, studentId)
                 .setParameter(1, subjectId)
+                .list();
+    }
+
+    public List<Grade> findGradesByStudentID(Long studentID) {
+        return (List<Grade>) this.sessionFactory.getCurrentSession()
+                .createQuery("FROM Grade WHERE student_id = ?")
+                .setParameter(0, studentID)
                 .list();
     }
 }
