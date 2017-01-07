@@ -72,11 +72,11 @@ public class StudentService {
     public List<GradeDTO> prepareCardWithGrades(Long studentID) {
         HashMap<String, String> cardWithGrades = new HashMap<>();
         List<Grade> grades = gradeService.findGradesByStudent(studentID);
-        grades.forEach(x -> cardWithGrades.put(x.getSubject().getName(), cardWithGrades.get(x.getSubject().getName()) == null ? cardWithGrades.get(x.getSubject().getName()) + x.getGradeValue() + "," : x.getGradeValue() + ","));
+        grades.forEach(x -> cardWithGrades.put(x.getSubject().getName(), cardWithGrades.get(x.getSubject().getName()) != null ? cardWithGrades.get(x.getSubject().getName()) + x.getGradeValue() + "," : x.getGradeValue() + ","));
 
         Set<String> keys = cardWithGrades.keySet();
         List<GradeDTO> gradesAsLists = new ArrayList<>();
-        keys.forEach(x -> gradesAsLists.add(new GradeDTO(x, cardWithGrades.get(x))));
+        keys.forEach(x -> gradesAsLists.add(new GradeDTO(cardWithGrades.get(x), x)));
 
         return gradesAsLists;
     }

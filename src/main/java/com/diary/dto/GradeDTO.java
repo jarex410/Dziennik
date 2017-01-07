@@ -30,6 +30,14 @@ public class GradeDTO {
         this.valuesAssString = valuesAssString;
     }
 
+    public String getSubjectName() {
+        return subjectName;
+    }
+
+    public void setSubjectName(String subjectName) {
+        this.subjectName = subjectName;
+    }
+
     public List<String> getValues() {
         return values;
     }
