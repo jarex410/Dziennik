@@ -1,5 +1,8 @@
 package com.diary.model;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -22,10 +25,12 @@ public class Grade  implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "student_id")
+    @Fetch(FetchMode.SELECT)
     private Student student;
 
     @ManyToOne
     @JoinColumn(name = "subject_id")
+    @Fetch(FetchMode.SELECT)
     private Subject subject;
 
     public Grade() {

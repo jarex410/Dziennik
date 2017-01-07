@@ -1,5 +1,8 @@
 package com.diary.model;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -16,6 +19,7 @@ public class Teacher extends DiaryUser {
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name="teacher_id")
+    @Fetch(FetchMode.SELECT)
     private List<Subject> subjectList;
 
     public List<Subject> getSubjectList() {
