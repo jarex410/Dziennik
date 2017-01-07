@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by JaroLP on 2016-11-05.
@@ -72,13 +73,10 @@ public class StudentService {
         HashMap<String, String> cardWithGrades = new HashMap<>();
         List<Grade> grades = gradeService.findGradesByStudent(studentID);
         grades.forEach(x -> cardWithGrades.put(x.getSubject().getName(), cardWithGrades.get(x.getSubject().getName()) == null ? cardWithGrades.get(x.getSubject().getName()) + x.getGradeValue() + "," : x.getGradeValue() + ","));
-        List<String> keys = (List<String>) cardWithGrades.keySet();
-        List<String> values = (List<String>) cardWithGrades.values();
-        List<GradeDTO> gradesAsLists = new ArrayList<>();
 
-        for (int i = 0; i < values.size(); i++) {
-            gradesAsLists.add(new GradeDTO(keys.get(i), values.get(i)));
-        }
+        Set<String> keys = cardWithGrades.keySet();
+        List<GradeDTO> gradesAsLists = new ArrayList<>();
+        keys.forEach(x -> gradesAsLists.add(new GradeDTO(x, cardWithGrades.get(x))));
 
         return gradesAsLists;
     }
