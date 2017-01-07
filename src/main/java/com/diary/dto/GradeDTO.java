@@ -17,6 +17,9 @@ public class GradeDTO {
 
     String valuesAssString;
 
+    public GradeDTO() {
+    }
+
     public GradeDTO(String valuesAssString, String subjectName) {
         this.valuesAssString = valuesAssString;
         this.subjectName = subjectName;
