@@ -21,18 +21,13 @@ public class StudentController {
     @Autowired
     StudentService studentService;
 
-/*    @RequestMapping(method = RequestMethod.GET)
-    public List<DiaryUser> findAll() {
-        return studentService.findAll();
-    }*/
-
     @RequestMapping(method = RequestMethod.POST)
     public void addStudent(@RequestBody Student student){
         studentService.create(student);
     }
 
-    @RequestMapping(path = "/{studentID}/class/{classID}", method = RequestMethod.PUT)
-    public void addStudentToClass(@PathVariable("classID") String classID, @PathVariable("studentID") String studentID){
+    @RequestMapping(path = "/class", method = RequestMethod.PUT)
+    public void addStudentToClass(@PathParam("classID") String classID, @PathParam("studentID") String studentID) {
         studentService.addStudentToClass(Long.valueOf(classID), Long.valueOf(studentID));
     }
 

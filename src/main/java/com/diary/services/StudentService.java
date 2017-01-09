@@ -35,11 +35,6 @@ public class StudentService {
         studentDAO.create(student);
     }
 
-/*    @Transactional
-    public List<Student> findAll() {
-        return studentDAO.findAll(Student.class);
-    }*/
-
     @Transactional
     public Student findStudentById(Long studentId) {
         return (Student) studentDAO.getById(Student.class, studentId);

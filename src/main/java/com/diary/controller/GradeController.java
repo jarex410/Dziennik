@@ -19,14 +19,6 @@ public class GradeController {
     @Autowired
     private GradeService gradeService;
 
-/*
-    @RequestMapping(method = RequestMethod.GET)
-    @ResponseBody
-    public List<Grade> findAll() {
-        return gradeService.findAll();
-    }
-*/
-
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
     public Grade addGrade(@RequestBody Grade grade) {

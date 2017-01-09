@@ -1,8 +1,6 @@
 package com.diary.services;
 
 import com.diary.dao.SchoolClassDAO;
-import com.diary.dao.SubjectDAO;
-import com.diary.dao.TeacherDAO;
 import com.diary.model.SchoolClass;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,16 +18,6 @@ public class SchoolClassService {
     @Autowired
     private SchoolClassDAO schoolClassDAO;
 
-    @Autowired
-    private StudentService studentService;
-
-    @Autowired
-    private TeacherDAO teacherDAO;
-
-    @Autowired
-    private SubjectDAO subjectDAO;
-
-
     @Transactional
     public void create(SchoolClass schoolClass) {
         schoolClassDAO.create(schoolClass);
@@ -45,18 +33,5 @@ public class SchoolClassService {
     public List<SchoolClass> findAll() {
         return schoolClassDAO.findAll(SchoolClass.class);
     }
-/*
-    @Transactional
-    public void addSubjectToClass(Long classID, Long subjectID){
-        Subject subject = subjectDAO.getById(Subject.class,subjectID);
-        SchoolClass schoolClass = schoolClassService.getById(SchoolClass.class,classID);
-
-        List<Subject> subjects = schoolClass.getSubjectList();
-        if(!subjects.contains(subject)) {
-            subjects.add(subject);
-            schoolClass.setSubjectList(subjects);
-            schoolClassService.update(schoolClass);
-        }
-    }*/
 
 }
