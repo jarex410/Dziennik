@@ -27,7 +27,7 @@ public class GradeController {
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public List<Grade> getGradeByStudentAndSubject(@PathParam("studentID") String studentId, @PathParam("subjectId") String subjectId) {
+    public List<Grade> getGradeByStudentAndSubject(@PathParam("studentId") String studentId, @PathParam("subjectId") String subjectId) {
         return gradeService.findGradesByStudentAndSubject(Long.valueOf(studentId), Long.valueOf(subjectId));
     }
 
